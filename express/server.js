@@ -5,9 +5,11 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 require("dotenv").config()
-const Web3Eth = require('web3-eth').Eth;
+const Web3Eth = require('web3-eth');
 const Web3Utils = require('web3-utils');
-const web3 = {eth: new Web3Eth(new Web3Eth.providers.HttpProvider("https://rpc.ftm.tools")), utils: Web3Utils};
+const Web3HttpProvider = require('web3-providers-http');
+// noinspection JSValidateTypes
+const web3 = {eth: new Web3Eth(new Web3HttpProvider("https://rpc.ftm.tools")), utils: Web3Utils};
 const snapshot = require('../snapshot.json'); //This must be static after contract is created.
 const abi = require('../abi.json'); //This must be static after contract is created.
 const contractAddr = "0x598E1CEbB2a4b7f169EecbbdfcAB395438E6Ec27".toLowerCase();

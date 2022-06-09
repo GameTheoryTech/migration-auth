@@ -5,8 +5,9 @@ const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 require("dotenv").config()
-const Web3 = require('web3');
-const web3 = new Web3(new Web3.providers.HttpProvider("https://rpc.ftm.tools"));
+const Web3Eth = require('web3-eth').Eth;
+const Web3Utils = require('web3-utils');
+const web3 = {eth: new Web3Eth(new Web3Eth.providers.HttpProvider("https://rpc.ftm.tools")), utils: Web3Utils};
 const snapshot = require('../snapshot.json'); //This must be static after contract is created.
 const abi = require('../abi.json'); //This must be static after contract is created.
 const contractAddr = "0x598E1CEbB2a4b7f169EecbbdfcAB395438E6Ec27".toLowerCase();
